@@ -1,0 +1,65 @@
+public class POOCarro {
+    public static void main(String[] args) {
+        Carro carro = new Carro();
+
+        carro.setModelo("Fiat Uno");
+        carro.setConsumoPorLitro(12.0);
+        carro.abastecer(20);
+
+        System.out.println("\n" + carro.getDadosCarro() + "\n");
+
+        carro.dirigir(100);
+        carro.dirigir(200);
+    }
+}
+
+class Carro {
+
+    private String modelo;
+    private double consumoPorLitro;
+    private double combustivelNoTanque;
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public void setConsumoPorLitro(double consumo) {
+        if (consumo > 0) {
+            this.consumoPorLitro = consumo;
+        } else {
+            System.out.println("Consumo inválido.");
+        }
+    }
+
+    public void abastecer(double litros) {
+        if (litros > 0) {
+            this.combustivelNoTanque += litros;
+            System.out.println("Abastecido com " + litros + " litros.");
+        } else {
+            System.out.println("Quantidade de litros inválida.");
+        }
+        exibirCombustivel();
+    }
+
+    public void dirigir(double km) {
+        double litrosNecessarios = km / consumoPorLitro;
+        if (litrosNecessarios <= combustivelNoTanque) {
+            combustivelNoTanque -= litrosNecessarios;
+            System.out.println("Você dirigiu " + km + " km.");
+        } else {
+            System.out.println("Combustível insuficiente para dirigir " + km + " km.");
+        }
+        exibirCombustivel();
+    }
+
+    public void exibirCombustivel() {
+        System.out.printf("Combustível restante: %.2f litros%n", combustivelNoTanque);
+    }
+
+    public String getDadosCarro() {
+        return "Modelo: " + modelo + "\nConsumo: " + consumoPorLitro + " km/l" +
+               "\nCombustível atual: " + combustivelNoTanque + " litros";
+    }
+}
+
+
