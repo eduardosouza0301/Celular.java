@@ -1,0 +1,48 @@
+class Celular {
+
+    private String sistemaOperacional;
+
+    public void setSistemaOperacional(String sistema) {
+        if (sistema != null && !sistema.isEmpty()) {
+            this.sistemaOperacional = sistema;
+            System.err.println("Sistema operacional definido");
+        } else {
+            System.out.println("Sistema operacional inválido.");
+        }
+    }
+
+    public String getSistemaOperacional() {
+        return this.sistemaOperacional + ". É um sistema bem desenvolvido.";
+    }
+
+    public void verificarMarca() {
+        if (!"Apple".equals(sistemaOperacional)) {
+            sistemaiInvalido();
+        } else {
+            System.out.println("Sistema aceito.");
+        }
+    }
+
+    private void sistemaiInvalido() {
+        System.out.println("Este sistema não é bom.");
+    }
+}
+
+
+public class POOCelular {
+
+    public static void main(String[] args) {
+        
+        Celular celular = new Celular();
+
+        celular.setSistemaOperacional("Apple");
+
+        System.out.println(celular.getSistemaOperacional());
+
+        celular.verificarMarca();
+    }
+}
+   
+    
+    
+
